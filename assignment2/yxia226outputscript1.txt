@@ -1,0 +1,134 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+SHOW DATABASES
+--------------
+
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| flp3               |
+| mysql              |
+| performance_schema |
+| vetoffice          |
+| yxia226assign2db   |
++--------------------+
+6 rows in set (0.00 sec)
+
+--------------
+DROP DATABASE IF EXISTS yxia226assign2db
+--------------
+
+Query OK, 5 rows affected (0.09 sec)
+
+--------------
+CREATE DATABASE yxia226assign2db
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+GRANT USAGE ON *.* TO 'ta'@'localhost'
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+DROP USER 'ta'@'localhost'
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+
+--------------
+CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319'
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+GRANT ALL PRIVILEGES ON yxia226assign2db.* TO 'ta'@'localhost'
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+FLUSH PRIVILEGES
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SHOW TABLES
+--------------
+
+Empty set (0.00 sec)
+
+--------------
+CREATE TABLE Westcscourses(
+course_number VARCHAR(10) NOT NULL,
+course_name VARCHAR(100),
+Weight FLOAT(8),
+Suffix VARCHAR(5),
+PRIMARY KEY(course_number)
+)
+--------------
+
+Query OK, 0 rows affected (0.04 sec)
+
+--------------
+CREATE TABLE Universities(
+Unique_ID INT(2) NOT NULL,
+Official_name VARCHAR(50),
+City VARCHAR(20),
+Province_code VARCHAR(10),
+Nick_name VARCHAR(20),
+PRIMARY KEY(Unique_ID)
+)
+--------------
+
+Query OK, 0 rows affected (0.04 sec)
+
+--------------
+CREATE TABLE Outsidecourses(
+course_code VARCHAR(20),
+course_name VARCHAR(100),
+Offer_year INT,
+Weight FLOAT(8), 
+University_ID INT(2),
+PRIMARY KEY(course_code,University_ID),
+FOREIGN KEY(University_ID) REFERENCES Universities(Unique_ID)
+)
+--------------
+
+Query OK, 0 rows affected (0.05 sec)
+
+--------------
+CREATE TABLE Equivalent(
+Westerncourse VARCHAR(10) NOT NULL,
+Outsidecourse VARCHAR(20),
+University_ID INT(2),
+Date date,
+PRIMARY KEY(Westerncourse,Outsidecourse,University_ID),
+Foreign key(Westerncourse) references Westcscourses(course_number) ON DELETE CASCADE,
+Foreign key(Outsidecourse) references Outsidecourses(course_code) ON DELETE CASCADE,
+Foreign key(University_ID) references Outsidecourses(University_ID) ON DELETE CASCADE
+	)
+--------------
+
+Query OK, 0 rows affected (0.21 sec)
+
+--------------
+SHOW TABLES
+--------------
+
++----------------------------+
+| Tables_in_yxia226assign2db |
++----------------------------+
+| Equivalent                 |
+| Outsidecourses             |
+| Universities               |
+| Westcscourses              |
++----------------------------+
+4 rows in set (0.00 sec)
+
+Bye
