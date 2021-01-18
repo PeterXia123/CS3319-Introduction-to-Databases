@@ -1,1 +1,54 @@
 
+Assignment 3
+Purpose
+Upon completion of assignment 3 you will be able to:
+Write a program using PHP and mysql that connects to a backend database
+Allow a user to make updates, insertions, deletions and query a database
+Create a program that runs on the internet
+Create a Graphical User Interface using HTML and CSS
+Instructions
+MAKE SURE YOU PUT ALL YOUR CODE IN A SUBFOLDER OF /var/www/html called a3yourmiddlename  (e.g. mine would be a3kathryn) AND MAKE SURE YOU SET THE PERMISSIONS AS FOLLOWS ON YOUR cs3319.gaul.csd.uwo.ca SITE:
+
+cd ~
+cd /var/www/html
+mkdir a3yourmiddlename
+chmod 755 a3yourmiddlename
+
+We are making the name a3yourmiddlename so that the name of your folder is unique and people can't see your code without you explicitly giving them the URL, I.E. so that the other students in the course can't find your folder and copy your html. They can't copy your php because it is hidden but they could copy your interface (your html, css and javascript files) so if you make the folder called a3yourmiddlename, it is hard for any student to guess that. If you do NOT have a middlename just pick a first name you wished your parents had given you :-) !
+
+Put all your code in a3yourmiddlename folder and subfolders of a3yourmiddlename. Your URL will then be:
+http://cs3319.gaul.csd.uwo.ca/vm???/a3yourmiddlename
+
+Make sure all your files in the a3yourmiddlename directory have a permission of 644 (to do this, inside your a3yourmiddlename folder do this command):
+chmod 644 filename.php
+chmod 755 anysubdirectoriesthatyoumakeina3middlenamefolder
+
+Using the database you created for assignment 2,CSS, HTML, PHP and MySQL (and JavaScript if you want, but you don't have to use JavaScript. It is possible to do the whole assignment without using JavaScript), create a website  that allows someone to update the Universities, Western Courses, Outside Courses and Equivalencies tables.  Here are the tasks a user must be able to complete
+
+List all the Western Course Data.  Allow the user to order the courses by Course Number OR by Course Name (you might want to use a radio button for this choice).  For each of these 2 fields (num or name)  allow the user to either order them in ascending or descending order (you could also use a radio button for this choice).
+Allow the user to select one of the Western Courses listed and change the Western course name or weight or suffix but do NOT allow the user to modify the Course number.
+Allow the user to select one of the Western Courses listed and delete that course. If the course is equivalent to outside courses, make sure you warn the user about that before deleting the course and allow the user to change his/her mind. Any permanent deletions should always allow the user the chance to back out. 
+Allow the user to enter a new Western Course.  The user should be able to enter all the information.   If the user enters a course number that already exists, give the user a warning message and do not allow it to be entered into the system. Make sure the user follows the rules of the course number starting with cs (it is up to you how you enforce that). 
+Allow the user to select a university from the list of universities names in order by province and then see all the university information and see all that university's courses. 
+Allow the user to select a province code and see all the university names and nicknames  from that province.
+Allow the user to select a Western course by number  and see the name and the number and the weight of the western course and see the university name and the outside course name and outside course number and weight of all outside courses it is equivalent to.  Also show the date this equivalency was made. 
+Allow the user to select a date and then show all equivalencies made before and including that date. For this query show the same information as in the previous bullet point. 
+Allow the user to create a new equivalency between an existing outside course and an existing Western course.  Make the equivalency date to be the current date.  If the user is trying to create an equivalency that already exists, then just modify that row in the table by updating  the date to today's date.
+List the names and nicknames of universities that are in our system but do not have any courses associated with them. 
+Bonus (worth about 2%): add an extra field to the university table called uniimage (you can do this right in mysql at the command line,  not using php code, make it char(100)). Allow the user to click on one of the universities and if this field is null then let the user find an image online of the university's school mascot  and add the url to the university table AND display the image in your user interface. If the field is not null, display the image at the url.
+It is a good habit to disconnect from a database once you have finished using it, make sure you program disconnects from the database. 
+
+Remember that PHP can get large and cluttered, your application will be marked partly on your structure, comments and modularity, don't put everything in one file, try using PHP includes and functions and  separate files to break up the PHP code.
+
+NOTE: you cannot use any third party DAL frameworks that let you avoid writing SQL queries/statements. We want you get experience writing SQL with this assignment.
+
+REMEMBER: You are expected to write the interface YOURSELF, you can look at other sites for ideas/inspirations but do NOT copy and paste any code from any of  your classmates (their HTML code or CSS code or JavaScript code or PHP code) or you could receive an academic penalty. Site any snippets of code (more than 20 lines) you get off the internet in your comments. 
+
+ DO NOT COPY CODE AND DO NOT GIVE YOUR CODE TO YOUR FRIENDS --> it is not worth it! It is better NOT to hand in the assignment and get 0 for the assignment THAN it is to copy from someone and get reported to the Dean and possible expulsion from Western!
+
+Handing in your assignment:
+You are required to submit the following via Owl:
+
+In the Owl submission textbox put: the URL for your working application so the cs3319 teaching assistant can try out your program.
+In the Owl attach/upload: all files (.php and .html and .js and .css and extra files ) used to create your application.  Please zip them together and just upload the .zip file.  
+IMPORTANT: You MUST have Bit Bucket working in order to hand in assignment 3 as a .zip file.  I made the following  video for the students in 2019. If you have Bit Bucket working, you don't really need to watch the following video but if you are still having issues, you can watch it. Please note though that this one uses HTTP rather than SSH so you will need HTTP and your Western password to push to the repo.csd.uwo.ca directory. BUT if you got everything working from the Week 5 - Bit Bucket Part 3 video (video made in 2020), then you can use SSH and the private key pair to avoid having to type in your password every time you do a push. So you only need to watch this video if you dont know how to zip your files together and/or how to  move the file from your VM to Bit Bucket and then to your local machine:  [http://www.csd.uwo.ca/~lreid/blendedcs3319/assignments/handina3/handina3.html] .  Also, watch where you move your directories, and make sure the link you submit still works. My video tells you to move directories but that might mess up your link, so just double check your link. 
